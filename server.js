@@ -43,6 +43,6 @@ app.get ('/api/:philoName', (req, res)=>{ //get url and query param
     }
 })
 
-app.listen(PORT, ()=>{
+app.listen(process.env.PORT, ()=>{
     console.log(`server is running on port ${PORT}`) //backticks to make ${} work
 })
