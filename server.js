@@ -1,9 +1,12 @@
 const express = require ('express');
 const app = express();
-const PORT = 8000;
 const cors = require ('cors');
 
-app.use(cors())
+const PORT = process.env.PORT || 8000; //use default environment port or 8000
+
+app.use(cors()) //use cors
+app.use(express.static('public')) //tells express to load files from 'public' folder
+
 
 //json object
 const philoList = {
@@ -43,6 +46,7 @@ app.get ('/api/:philoName', (req, res)=>{ //get url and query param
     }
 })
 
-app.listen(process.env.PORT, ()=>{
+// app.listen(process.env.PORT, ()=>{
+app.listen(PORT, ()=>{
     console.log(`server is running on port ${PORT}`) //backticks to make ${} work
 })
