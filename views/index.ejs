@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Current Philosophers</h1>
+    <ul class="philosophers">
+    <% for(let i=0; i < info.length; i++) {%>
+        <li class="philo">
+            <span><%= info[i].fullName %></span>
+            <br>
+            <span><%= info[i].mainInterests %></span>
+        </li>
+    <% } %>
+    </ul>
+
+    <h2>Add a Philosopher:</h2>
+
+    <form action="/addRapper" method="POST">
+        <input type="text" placeholder="Last Name" name="lastName">
+        <input type="text" placeholder="Full Name" name="fullName">
+        <input type="submit">
+    </form>
+    
+
+    <script src='js/main.js'></script>
+</body>
+</html>
