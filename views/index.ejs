@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -17,22 +18,28 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Current Philosophers</h1>
+    <h1>Current Philosopher List</h1>
     <ul class="philosophers">
     <% for(let i=0; i < info.length; i++) {%>
         <li class="philo">
-            <span><%= info[i].fullName %></span>
+            <h4><%= info[i].fullName %></h4><span> (<%= info[i].born %> - <%= info[i].died %>)</span>
             <br>
-            <span><%= info[i].mainInterests %></span>
+            <span>Main Interests: <%= info[i].mainInterests %></span>
+            <span class='fa fa-trash'></span>
         </li>
     <% } %>
     </ul>
 
     <h2>Add a Philosopher:</h2>
 
-    <form action="/addRapper" method="POST">
+    <form action="/addPhilos" method="POST">
         <input type="text" placeholder="Last Name" name="lastName">
         <input type="text" placeholder="Full Name" name="fullName">
+        <br>
+        <div>Born:<input type="text" placeholder="MM/DD/YYYY" name="born"></div>
+        <div>Died:<input type="text" placeholder="MM/DD/YYYY" name="died"></div>
+        <input type="text" placeholder="Main Interests" name="mainInterests">
+        <br>
         <input type="submit">
     </form>
     
