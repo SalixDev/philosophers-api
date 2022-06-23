@@ -1,49 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Current Philosopher List</h1>
-    <ul class="philosophers">
-    <% for(let i=0; i < info.length; i++) {%>
-        <li class="philo">
-            <h4><%= info[i].fullName %></h4><span> (<%= info[i].born %> - <%= info[i].died %>)</span>
-            <br>
-            <span>Main Interests: <%= info[i].mainInterests %></span>
-            <span class='fa fa-trash'></span>
-        </li>
-    <% } %>
-    </ul>
+	<head lang="en">
+		<title>Philosopher inner API</title>
+		<meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+        <!-- Wrapper -->
+			<div id="wrapper">
 
-    <h2>Add a Philosopher:</h2>
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
 
-    <form action="/addPhilos" method="POST">
-        <input type="text" placeholder="Last Name" name="lastName">
-        <input type="text" placeholder="Full Name" name="fullName">
-        <br>
-        <div>Born:<input type="text" placeholder="MM/DD/YYYY" name="born"></div>
-        <div>Died:<input type="text" placeholder="MM/DD/YYYY" name="died"></div>
-        <input type="text" placeholder="Main Interests" name="mainInterests">
-        <br>
-        <input type="submit">
-    </form>
-    
+							<!-- Logo -->
+								<a href="/index.ejs" class="logo">
+									<span class="symbol"><img src="/images/logo.svg" alt="" /></span><span class="title">Philo API</span>
+								</a>
 
-    <script src='js/main.js'></script>
-</body>
+
+						</div>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<header>
+								<h1>This is Philo, a simple database API that helps you look up your favorite philosophers.</h1>
+								<h2>Built by <a href="https://github.com/SalixDev">@SalixDev</a>.</h2>
+								<p>Simply search philosophers by last name. Hovering over the card will reveal quick facts. Clicking on the card will direct you to their respective wikipedia page for further information!</p>
+							</header>
+
+                            <!-- ejs -->
+                            <Section class="tiles">
+
+                                <% for(let i=0; i < info.length; i++) {%>
+                                    <article class="style<%- i>=6 ? i%6+1 : i+1 %>"> <!-- only 6 preset color styles -->
+                                        <span class="image">
+                                            <img src="/images/pic<%- i>=15 ? i%15+1 : i+1 %>.jpg" alt="" /> <!-- only 15 preset blur images -->
+                                            </span>
+                                            <a href="https://en.wikipedia.org/wiki/<%=info[i].lastName%>">
+                                                <h2><%= info[i].fullName %></h2>
+												<h4><%= info[i].born %> - <%= info[i].died %> </h4>
+                                                <div class="content">
+                                                    <p><%= info[i].mainInterests%></p> 
+                                                </div>
+                                            </a>
+
+                                    </article>
+                              <% } %>
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>What would you like to see?</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="https://www.linkedin.com/in/eddie-s/" class="icon brands style2 fa-linkedin"><span class="label">Linked In</span></a></li>
+									<li><a href="https://twitter.com/SalixDev" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="https://github.com/SalixDev" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li> <!-- hello@eddiesalcedo.com -->
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>Eddie Salcedo. All rights reserved</li><li>Built with EJS, SCSS, JS, NodeJs, Express, and MongoDB</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/browser.min.js"></script>
+			<script src="/assets/js/breakpoints.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+			<script src="/assets/js/main.js"></script>
+
+	</body>
 </html>
