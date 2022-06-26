@@ -8,23 +8,10 @@
 		<link rel="stylesheet" href="/assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
 		<!-- favicon -->
-		<link rel="apple-touch-icon" sizes="57x57" href="/images/favicon_philo/apple-icon-57x57.png">
-		<link rel="apple-touch-icon" sizes="60x60" href="/images/favicon_philo/apple-icon-60x60.png">
-		<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon_philo/apple-icon-72x72.png">
-		<link rel="apple-touch-icon" sizes="76x76" href="/images/favicon_philo/apple-icon-76x76.png">
-		<link rel="apple-touch-icon" sizes="114x114" href="/images/favicon_philo/apple-icon-114x114.png">
-		<link rel="apple-touch-icon" sizes="120x120" href="/images/favicon_philo/apple-icon-120x120.png">
-		<link rel="apple-touch-icon" sizes="144x144" href="/images/favicon_philo/apple-icon-144x144.png">
-		<link rel="apple-touch-icon" sizes="152x152" href="/images/favicon_philo/apple-icon-152x152.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_philo/apple-icon-180x180.png">
-		<link rel="icon" type="image/png" sizes="192x192"  href="/images/favicon_philo/android-icon-192x192.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_philo/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="96x96" href="/images/favicon_philo/favicon-96x96.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_philo/favicon-16x16.png">
 		<link rel="manifest" href="/images/favicon_philo/manifest.json">
-		<meta name="msapplication-TileColor" content="#ffffff">
-		<meta name="msapplication-TileImage" content="/images/favicon_philo/ms-icon-144x144.png">
-		<meta name="theme-color" content="#ffffff">
 		<!-- favicon end -->
 	</head>
 	<body class="is-preload">
@@ -49,9 +36,22 @@
 						<div class="inner">
 							<header>
 								<h1>This is Philo, a simple database API that helps you look up your favorite philosophers.</h1>
-								<h2>Built by <a href="https://github.com/SalixDev">@SalixDev</a>.</h2>
-								<p>Simply search philosophers by last name. Hovering over the card will reveal quick facts. Clicking on the card will direct you to their respective wikipedia page for further information!</p>
+								<p><strong>Simply search philosophers by last name. Hovering over the card will reveal quick facts. Clicking on the card will direct you to their respective wikipedia page for further information!</strong></p>
+								<p>Built by <a href="https://github.com/SalixDev">@SalixDev</a>.</p>
 							</header>
+
+							<h2>Add a Philosopher:</h2>
+
+							<form action="/addPhilos" method="POST">
+								<input type="text" placeholder="Last Name" name="lastName">
+								<input type="text" placeholder="Full Name" name="fullName">
+								<br>
+								<span>Year of Birth:<input class="inputDate" type="text" placeholder="" name="born"></span>
+								<span>Year of Death:<input class="inputDate" type="text" placeholder="" name="died"></span>
+								<input class="mainInterests" type="text" placeholder="Main Interests" name="mainInterests">
+								<br>
+								<input type="submit">
+							</form>
 
                             <!-- ejs -->
                             <Section class="tiles">
@@ -61,8 +61,8 @@
                                         <span class="image">
                                             <img src="/images/pic<%- i>=15 ? i%15+1 : i+1 %>.jpg" alt="" /> <!-- only 15 preset blur images -->
                                             </span>
-                                            <a href="https://en.wikipedia.org/wiki/<%=info[i].lastName%>">
-                                                <h2><%= info[i].fullName %></h2>
+												<a href="https://en.wikipedia.org/wiki/<%=info[i].lastName%>">
+												<h2><%= info[i].fullName %></h2>
 												<h4><%= info[i].born %> - <%= info[i].died %> </h4>
                                                 <div class="content">
                                                     <p><%= info[i].mainInterests%></p> 
