@@ -5,6 +5,7 @@
 		<meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 		<link rel="stylesheet" href="/assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
 		<!-- favicon -->
@@ -58,12 +59,19 @@
 
                                 <% for(let i=0; i < info.length; i++) {%>
                                     <article class="style<%- i>=6 ? i%6+1 : i+1 %>"> <!-- only 6 preset color styles -->
-                                        <span class="image">
+
+											<span class="image">
                                             <img src="/images/pic<%- i>=15 ? i%15+1 : i+1 %>.jpg" alt="" /> <!-- only 15 preset blur images -->
-                                            </span>
-												<a href="https://en.wikipedia.org/wiki/<%=info[i].lastName%>">
+                                        </span>
+											<a>
+												<div class="buttonTab">
+													<span><%= info[i].likes %></span>
+													<span class='fa fa-thumbs-up'></span>
+													<span class='fa fa-trash'></span>
+												</div>
 												<h2><%= info[i].fullName %></h2>
 												<h4><%= info[i].born %> - <%= info[i].died %> </h4>
+												<p><%= info[i]._id %></p>
                                                 <div class="content">
                                                     <p><%= info[i].mainInterests%></p> 
                                                 </div>
@@ -119,6 +127,8 @@
 			<script src="/assets/js/breakpoints.min.js"></script>
 			<script src="/assets/js/util.js"></script>
 			<script src="/assets/js/main.js"></script>
+			<script src="/assets/js/eventListener.js"></script>
+
 
 	</body>
 </html>
