@@ -5,7 +5,8 @@
 		<meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+		<script src="https://kit.fontawesome.com/158710b62f.js" crossorigin="anonymous"></script>
+		<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
 		<link rel="stylesheet" href="/assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
 		<!-- favicon -->
@@ -44,12 +45,14 @@
 							<h2>Add a Philosopher:</h2>
 
 							<form action="/addPhilos" method="POST">
-								<input type="text" placeholder="Last Name" name="lastName">
 								<input type="text" placeholder="Full Name" name="fullName">
 								<br>
 								<span>Year of Birth:<input class="inputDate" type="text" placeholder="" name="born"></span>
 								<span>Year of Death:<input class="inputDate" type="text" placeholder="" name="died"></span>
 								<input class="mainInterests" type="text" placeholder="Main Interests" name="mainInterests">
+								<br>
+								<input class="wiki" type="text" placeholder="Wikipedia page URL/ Link" name="wiki">
+								<br>
 								<br>
 								<input type="submit">
 							</form>
@@ -63,11 +66,11 @@
 											<span class="image">
                                             <img src="/images/pic<%- i>=15 ? i%15+1 : i+1 %>.jpg" alt="" /> <!-- only 15 preset blur images -->
                                         </span>
-											<a>
+											<div class="tiles-content-container">
 												<div class="buttonTab">
-													<span><%= info[i].likes %></span>
-													<span class='fa fa-thumbs-up'></span>
-													<span class='fa fa-trash'></span>
+													<button class='fa fa-thumbs-up'><span><%= info[i].likes %></span></button>
+													<a class="wiki-button" href="<%= info[i].wiki%>"><button class="fa-brands fa-wikipedia-w"></button></a>
+													<button class='fa fa-trash'></button>
 												</div>
 												<h2><%= info[i].fullName %></h2>
 												<h4><%= info[i].born %> - <%= info[i].died %> </h4>
@@ -75,7 +78,7 @@
                                                 <div class="content">
                                                     <p><%= info[i].mainInterests%></p> 
                                                 </div>
-                                            </a>
+                                            </div>
 
                                     </article>
                               <% } %>
