@@ -33,6 +33,7 @@
 						</div>
 					</header>
 
+
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
@@ -42,7 +43,34 @@
 								<p>Built by <a href="https://github.com/SalixDev">@SalixDev</a>.</p>
 							</header>
 
-							<h2>Add a Philosopher:</h2>
+
+							<div class="interior">
+								<a class="btn" href="#open-modal"><button>+ Add Philosopher</button></a>
+							  </div>
+							
+							<div id="open-modal" class="modal-window">
+							  <div>
+								<a href="#" title="Close" class="modal-close">Close</a>
+								<h1>Add new Philo</h1>
+								<form action="/addPhilos" method="POST">
+									<input type="text" placeholder="Full Name" name="fullName">
+									<br>
+									<span>Year of Birth:<input class="inputDate" type="text" placeholder="" name="born"></span>
+									<br>
+									<span>Year of Death:<input class="inputDate" type="text" placeholder="" name="died"></span>
+									<input class="mainInterests" type="text" placeholder="Main Interests" name="mainInterests">
+									<br>
+									<input class="wiki" type="text" placeholder="Wikipedia page URL/ Link" name="wiki">
+									<br>
+									<br>
+									<input type="submit">
+								</form>
+							  </div>
+							</div>
+							<br>
+							<br>
+
+							<!-- <h2>Add a Philosopher:</h2>
 
 							<form action="/addPhilos" method="POST">
 								<input type="text" placeholder="Full Name" name="fullName">
@@ -55,7 +83,7 @@
 								<br>
 								<br>
 								<input type="submit">
-							</form>
+							</form> -->
 
                             <!-- ejs -->
                             <Section class="tiles">
