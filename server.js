@@ -36,12 +36,14 @@ app.get('/', (req, res) => {
 })
 
 app.post('/addPhilos', (req, res) => {
-    db.collection('Philosophers').insertOne({lastName: req.body.lastName.toLowerCase(),
+    console.log(req)
+    db.collection('Philosophers').insertOne({
     fullName: req.body.fullName, born: req.body.born, died: req.body.died,
-    mainInterests: req.body.mainInterests, likes: 0})
+    mainInterests: req.body.mainInterests, wiki: req.body.wiki, likes: 0})
     .then(result => {
-        console.log('Philo added. Thank you.') //may need to set alert() after redirect
+        console.log('Philo added. Thank you.') //may want to set alert() after redirect
         res.redirect('/')
+        alert('Philosopher added, thank you.')
     })
     .catch(error => console.error(error))
 })
